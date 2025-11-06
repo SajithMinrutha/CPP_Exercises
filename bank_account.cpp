@@ -9,7 +9,7 @@ private:
 
 public:
     BankAccount(std::string account_holder_name, double balance_initial)
-        : account_holder(account_holder_name), balance(balance_initial)
+        : account_holder(account_holder_name), balance(0)
     {
         if (balance_initial < 0)
         {
@@ -17,6 +17,7 @@ public:
         }
         else
         {
+            balance = balance_initial;
             std::cout << "Account created successfully!\n";
         }
     }
@@ -44,19 +45,23 @@ public:
         balance -= amount;
         return amount;
     }
+    std::string get_account_holder_name() const
+    {
+        return account_holder;
+    }
 };
 
 int main()
 {
     BankAccount myAccount("Minrutha", 1000);
 
-    std::cout << "Balance: " << myAccount.getBalance() << "\n";
-
-    myAccount.deposit(200);
-    std::cout << "After deposit: " << myAccount.getBalance() << "\n";
-
-    myAccount.withdraw(100);
-    std::cout << "After withdraw: " << myAccount.getBalance() << "\n";
-
+    std::cout << "\n--- Testing Failure Cases ---\n";
+    std::cout << "Current balance: " << myAccount.getBalance() << "\n";
+    std::cout << "Attempting to withdraw 5000...\n";
+    myAccount.withdraw(5000);
+    std::cout << "Balance after invalid withdrawal: " << myAccount.getBalance() << "\n";
+    std::cout << "Attempting to deposit -100...\n";
+    myAccount.deposit(-100);
+    std::cout << "Balance after invalid deposit: " << myAccount.getBalance() << "\n";
     return 0;
 }
