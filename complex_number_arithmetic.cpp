@@ -28,21 +28,15 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Complex &c);
     friend std::istream &operator>>(std::istream &is, Complex &c);
-
-    void print() const
-    {
-        if (imaginary > 0)
-            cout << real << " + " << imaginary << "i" << endl;
-        else if (imaginary < 0)
-            cout << real << " - " << -imaginary << "i" << endl;
-        else
-            cout << real << endl;
-    }
 };
 
 std::ostream &operator<<(std::ostream &os, const Complex &c)
 {
-    os << "(" << c.real << ", " << c.imaginary << ")";
+    os << c.real;
+    if (c.imaginary > 0)
+        os << " + " << c.imaginary << "i";
+    else if (c.imaginary < 0)
+        os << " - " << -c.imaginary << "i";
     return os;
 }
 
@@ -64,11 +58,11 @@ int main()
     Complex c4 = c1 - c2;
     Complex c5 = -c1;
 
-    c1.print();
-    c2.print();
-    c3.print();
-    c4.print();
-    c5.print();
+    std::cout << "c1: " << c1 << std::endl;
+    std::cout << "c2: " << c2 << std::endl;
+    std::cout << "c1 + c2 = " << c3 << std::endl;
+    std::cout << "c1 - c2 = " << c4 << std::endl;
+    std::cout << "-c1 = " << c5 << std::endl;
 
     Complex c6;
     std::cin >> c6;
