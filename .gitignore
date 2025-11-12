@@ -1,14 +1,20 @@
-# Ignore everything
-*
+# Ignore everything at the root
+/*
 
-# But not these files...
+# Allow directories so we can re-include files inside them
+!*/
+
+# Track C++ source files and markdown docs
 !*.cpp
 !*.md
 !.gitignore
 
-# Even if they are in subdirectories
-!*/
-
-# Ignore all executables even if they don't have an extension
-*
-!*.*
+# Common editor and OS noise (kept for clarity; these are already ignored by the "ignore all" above)
+.vscode/
+build/
+Debug/
+Release/
+*.o
+*.out
+*.exe
+.DS_Store
