@@ -50,10 +50,8 @@ void Inventory::sortProductsByName()
 {
     std::vector<std::pair<int, Products>> v;
     std::copy(products.begin(), products.end(), std::back_inserter(v));
-    std::sort(v.begin(), v.end(), [](const auto &a, const auto &b))
-    {
-        return a.second.getName() < b.second.getName();
-    }
+    std::sort(v.begin(), v.end(), [](const auto &a, const auto &b)
+              { return a.second.getName() < b.second.getName(); });
 
     for (const auto &p : v)
     {
@@ -91,7 +89,7 @@ void Inventory::calculateTotalInventoryValue()
 {
     double totalValue = 0;
 
-    for (auto &item : products)
+    for (const auto &item : products)
     {
         totalValue += item.second.getQuantity() * item.second.getPrice();
     }

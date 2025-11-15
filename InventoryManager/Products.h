@@ -15,8 +15,8 @@ public:
     Products();
     Products(const string &name, int price);
     void setQuantity(int new_quantity);
-    int getQuantity();
-    int getPrice();
-    string getName();
+    int getQuantity() const;
+    int getPrice() const;
+    string getName() const;
 };
 #endif

@@ -13,15 +13,15 @@ void Products::setQuantity(int new_quantity)
     quantity = new_quantity;
     cout << "The product quantity is successfully updated to " << new_quantity;
 };
-int Products::getQuantity()
+int Products::getQuantity() const
 {
     return quantity;
 }
-string Products::getName()
+string Products::getName() const
 {
     return product_name;
 }
-int Products::getPrice()
+int Products::getPrice() const
 {
     return product_price;
 }
